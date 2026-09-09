@@ -1,4 +1,4 @@
-import { test, expect } from '../../fixtures/todofixtures.js';
+import { test, expect } from '../../fixtures/todoFixtures.js';
 import{todoData} from '../../test-data/todoData.js';
 
 for (const toDoData of todoData) {  
