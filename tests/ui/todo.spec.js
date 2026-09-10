@@ -7,6 +7,6 @@ test (`@smoke @regression user can add todos- ${toDoData}`, async ({todoPage}) =
 
 
     await todoPage.addTodo(toDoData);
-    await expect(todoPage.todoTitle).toHaveText(toDoData);
+    await expect(todoPage.todoTitle).toHaveText("for failure testing");
 })
 }
