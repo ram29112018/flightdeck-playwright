@@ -10,8 +10,15 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
     container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
+     image: ghcr.io/ram29112018/flightdeck-playwright:v2
+     credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
     env:
       HOME: /root
     steps:
