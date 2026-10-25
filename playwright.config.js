@@ -43,6 +43,7 @@ export default defineConfig({
 
   {
     name: 'chromium',
+    testMatch: '**/ui/**/*.spec.js',
     use: {
       ...devices['Desktop Chrome'],
       //storageState: 'playwright/.auth/codegen-user.json',
@@ -52,20 +53,22 @@ export default defineConfig({
 
   {
     name: 'firefox',
+    testMatch: '**/ui/**/*.spec.js',
     use: { ...devices['Desktop Firefox'] },
   },
 
   {
     name: 'webkit',
+    testMatch: '**/ui/**/*.spec.js',
     use: { ...devices['Desktop Safari'] },
   },
   {
-    name: 'api',
-    use:{
-      baseURL:'https://api.restful-api.dev',
-    }
-    
-  }
+  name: 'api',
+  testDir: './tests/api',
+  use: {
+    baseURL: 'https://api.restful-api.dev',
+  },
+}
 ],
 
     /* Test against mobile viewports. */
