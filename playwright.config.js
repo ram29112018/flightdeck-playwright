@@ -36,20 +36,40 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+  {
+    name: 'setup',
+    testMatch: /.*\.setup\.js/,
+  },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+  {
+    name: 'chromium',
+    testMatch: '**/ui/**/*.spec.js',
+    use: {
+      ...devices['Desktop Chrome'],
+      //storageState: 'playwright/.auth/codegen-user.json',
     },
+    //dependencies: ['setup'],
+  },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+  {
+    name: 'firefox',
+    testMatch: '**/ui/**/*.spec.js',
+    use: { ...devices['Desktop Firefox'] },
+  },
+
+  {
+    name: 'webkit',
+    testMatch: '**/ui/**/*.spec.js',
+    use: { ...devices['Desktop Safari'] },
+  },
+  {
+  name: 'api',
+  testDir: './tests/api',
+  use: {
+    baseURL: 'https://api.restful-api.dev',
+  },
+}
+],
 
     /* Test against mobile viewports. */
     // {
@@ -70,7 +90,7 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-  ],
+  
 
   /* Run your local dev server before starting the tests */
   // webServer: {
