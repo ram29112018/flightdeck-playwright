@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+
+metadata:
+  name: playwright-smoke-tests
+
+spec:
+  backoffLimit: 0
+
+  template:
+    spec:
+      restartPolicy: Never
+
+      containers:
+        - name: playwright
+          image: flightdeck-playwright:latest
+          imagePullPolicy: IfNotPresent
+
+          command:
+            - npx
+            - playwright
+            - test
+            - --grep
+            - "@smoke"
+            - --project=chromium

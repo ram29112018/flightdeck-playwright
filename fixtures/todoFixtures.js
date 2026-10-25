@@ -9,8 +9,11 @@ const test = base.extend({
         await todoPage.goto();
         await use(todoPage);
 //teardown        
-        for (const toDoData of todoPage.createdTodos) {
-             await todoPage.deleteTodo(toDoData);
+        for (const todoText of todoPage.createdTodos) {
+            const todoItem = todoPage.getTodo(todoText);
+            if (await todoItem.count() > 0) {
+                await todoPage.deleteTodo(todoText);
+            }
         }
     }
 });

@@ -1,5 +1,14 @@
 export const todoData = [
-    'Buy Groceries',
-    'Prepare Interview',
-    'Learn Playwright'
+    {
+        title: 'Buy Groceries',
+        completed: false
+    },
+    {
+        title: 'Prepare Interview',
+        completed: true
+    },
+    {
+        title: 'Learn Playwright',
+        completed: true
+    }
 ];
